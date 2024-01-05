@@ -11,8 +11,16 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/vimal");
 const userschema = mongoose.Schema({
   username: String,
-  name: String,
-  age: Number
-})
+  nickname: String,
+  description: String,
+  categories: {
+    type: Array,
+    default: []
+  },
+  datacreated: {
+    type: Date,
+    default: Date.now()
+  }
+});
 
 module.exports = mongoose.model("user", userschema);
